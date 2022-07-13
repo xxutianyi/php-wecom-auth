@@ -1,0 +1,28 @@
+{
+  "name": "xxutianyi/php-wecom-auth",
+  "description": "PHP Auth SDK for Wecom (WorkWeixin) Server Side Api",
+  "keywords": [
+    "wecom",
+    "work weixin",
+    "qiyeweixin",
+    "sdk"
+  ],
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "xXutianyi\\WecomAuth\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "徐添翼 XuTianyi",
+      "email": "xutianyi12@outlook.com"
+    }
+  ],
+  "require": {
+    "php": "^8.0.2",
+    "guzzlehttp/guzzle": "^7.0",
+    "symfony/cache": "^6.0"
+  }
+}
