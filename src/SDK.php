@@ -60,7 +60,7 @@ abstract class SDK
 
     private function makeQuery(array $query): array
     {
-        $query[] = [
+        $query += [
             'access_token' => $this->AccessToken
         ];
         return $query;
