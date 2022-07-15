@@ -8,6 +8,7 @@ use xXutianyi\WecomAuth\SDK;
 class Authen extends SDK
 {
     const AUTHEN_BY_CODE = "/user/getuserinfo";
+    const GET_USER_BY_TICKET = "/user/getuserdetail";
 
     const GET_QR_PARAMS = [
         "id" => "string",
@@ -44,6 +45,21 @@ class Authen extends SDK
             'code' => $code
         ];
         return $this->get(self::AUTHEN_BY_CODE, $query);
+    }
+
+    public function GetUserByCode($code): array
+    {
+        $query = [
+            'code' => $code
+        ];
+        $ticket = $this->get(self::AUTHEN_BY_CODE, $query)['user_ticket'];
+
+        $param = [
+            'user_ticket' => $ticket
+        ];
+
+        return $this->post(self::GET_USER_BY_TICKET, [], $param);
+
     }
 
 }
