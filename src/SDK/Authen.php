@@ -25,6 +25,11 @@ class Authen extends SDK
         return "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->config->CorpId}&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_base&state=$state&agentid={$this->config->AgentID}#wechat_redirect";
     }
 
+    public function GetBootUrlPrivate($redirectUrl, $state = ""): string
+    {
+        return "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->config->CorpId}&redirect_uri=$redirectUrl&response_type=code&scope=snsapi_privateinfo&state=$state&agentid={$this->config->AgentID}#wechat_redirect";
+    }
+
     #[ArrayShape(self::GET_QR_PARAMS)]
     public function GetQrParams(int|bool $redirectUrl, $htmlID, $state = "", $href = "", $lang = "zh"): array
     {
@@ -47,13 +52,8 @@ class Authen extends SDK
         return $this->get(self::AUTHEN_BY_CODE, $query);
     }
 
-    public function GetUserByCode($code): array
+    public function GetUserByTicket($ticket): array
     {
-        $query = [
-            'code' => $code
-        ];
-        $ticket = $this->get(self::AUTHEN_BY_CODE, $query)['user_ticket'];
-
         $param = [
             'user_ticket' => $ticket
         ];
