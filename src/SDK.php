@@ -90,12 +90,13 @@ abstract class SDK
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws Exception
      */
-    public function post(string $url, array $query = [], array $params = []): array
+    public function post(string $url, array $query = [], array $params = [], array $form = []): array
     {
         $res = HttpCall::post(
             $this->makeUrl($url),
             $this->makeQuery($query),
             $params,
+            $form,
         );
         return $this->unpackResponse($res);
     }

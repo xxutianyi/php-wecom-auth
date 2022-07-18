@@ -15,7 +15,7 @@ class HttpCall
      * @return StreamInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function get(string $url,  array $query = [], array $headers = []): StreamInterface
+    public static function get(string $url, array $query = [], array $headers = []): StreamInterface
     {
         $client = new Client();
         return $client->get(
@@ -35,15 +35,16 @@ class HttpCall
      * @return StreamInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function post(string $url,  array $query = [], array $params = [], array $headers = []): StreamInterface
+    public static function post(string $url, array $query = [], array $params = [], array $form = [], array $headers = []): StreamInterface
     {
         $client = new Client();
         return $client->post(
             $url,
             [
-                'headers' =>  $headers,
+                'headers' => $headers,
                 'query' => $query,
                 'json' => $params,
+                'multipart' => $form,
             ]
         )->getBody();
     }
@@ -56,13 +57,13 @@ class HttpCall
      * @return StreamInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public static function put(string $url,  array $query = [], array $params = [], array $headers = []): StreamInterface
+    public static function put(string $url, array $query = [], array $params = [], array $headers = []): StreamInterface
     {
         $client = new Client();
         return $client->put(
             $url,
             [
-                'headers' =>  $headers,
+                'headers' => $headers,
                 'query' => $query,
                 'json' => $params,
             ]
