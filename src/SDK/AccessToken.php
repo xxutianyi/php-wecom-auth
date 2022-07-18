@@ -11,8 +11,6 @@ class AccessToken
 {
     const ACCESS_TOKEN_URL = "/gettoken";
 
-    const ACCESS_TOKEN_CACHE_KEY = "xXutianyi.wecom.app.access_token";
-
     const BASE_URL = "https://qyapi.weixin.qq.com/cgi-bin";
 
     private array $params;
@@ -29,7 +27,7 @@ class AccessToken
     {
         //初始化 cache 实例
         $this->cache = new FilesystemAdapter();
-        $cacheKey = self::ACCESS_TOKEN_CACHE_KEY;
+        $cacheKey = "xXutianyi.wecom.app.access_token." . $config->AgentID . "." . $config->CorpId;
         $this->AccessTokenInstance = $this->cache->getItem($cacheKey);
 
         //初始化配置
