@@ -49,7 +49,7 @@ class Authen extends SDK
         $query = [
             'code' => $code
         ];
-        return $this->get(self::AUTHEN_BY_CODE, $query);
+        return $this->httpGet(self::AUTHEN_BY_CODE, $query);
     }
 
     public function GetUserByTicket($ticket): array
@@ -58,7 +58,7 @@ class Authen extends SDK
             'user_ticket' => $ticket
         ];
 
-        return $this->post(self::GET_USER_BY_TICKET, [], $param);
+        return $this->httpPost(self::GET_USER_BY_TICKET, [], $param);
 
     }
 

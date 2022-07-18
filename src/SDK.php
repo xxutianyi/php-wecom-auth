@@ -73,7 +73,7 @@ abstract class SDK
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws Exception
      */
-    public function get(string $url, array $query = []): array
+    protected function httpGet(string $url, array $query = []): array
     {
         $res = HttpCall::get(
             $this->makeUrl($url),
@@ -90,7 +90,7 @@ abstract class SDK
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws Exception
      */
-    public function post(string $url, array $query = [], array $params = [], array $form = []): array
+    protected function httpPost(string $url, array $query = [], array $params = [], array $form = []): array
     {
         $res = HttpCall::post(
             $this->makeUrl($url),
