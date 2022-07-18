@@ -29,7 +29,7 @@ abstract class SDK
     /**
      * @throws Exception
      */
-    public function unpackResponse($raw): array
+    protected function unpackResponse($raw): array
     {
         $raw = json_decode($raw, true);
         $this->checkError($raw);
@@ -53,12 +53,12 @@ abstract class SDK
      * @param string $url
      * @return string
      */
-    private function makeUrl(string $url): string
+    protected function makeUrl(string $url): string
     {
         return self::BASE_URL . $url;
     }
 
-    private function makeQuery(array $query): array
+    protected function makeQuery(array $query): array
     {
         $query += [
             'access_token' => $this->AccessToken
