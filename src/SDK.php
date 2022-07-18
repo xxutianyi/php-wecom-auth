@@ -12,7 +12,7 @@ abstract class SDK
 
     const BASE_URL = "https://qyapi.weixin.qq.com/cgi-bin";
 
-    private string $AccessToken;
+    protected string $AccessToken;
     protected Config $config;
 
     /**
